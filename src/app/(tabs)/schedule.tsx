@@ -1,4 +1,5 @@
-import { Text, View } from "@/components/Themed";
+import { Text } from "@/components/Themed";
+import { View } from "react-native";
 
 export default function Schedule() {
   return (

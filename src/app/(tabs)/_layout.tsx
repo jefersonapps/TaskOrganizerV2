@@ -1,9 +1,9 @@
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
-import Colors from "@/constants/Colors";
 import { FontAwesome6, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Link, Tabs } from "expo-router";
 import React from "react";
-import { Pressable, useColorScheme } from "react-native";
+import { Pressable } from "react-native";
+import { useTheme } from "../hooks/useTheme";
 
 function TabBarIconFA(props: {
   name: keyof typeof FontAwesome6.glyphMap;
@@ -22,13 +22,14 @@ function TabBarIconMA(props: {
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const theme = useTheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: theme.primary,
         headerShown: useClientOnlyValue(false, true),
+        headerTintColor: theme.primary,
       }}
     >
       <Tabs.Screen
@@ -45,7 +46,7 @@ export default function TabLayout() {
                   <FontAwesome6
                     name="gear"
                     size={25}
-                    color={Colors[colorScheme ?? "light"].text}
+                    color={theme.text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
